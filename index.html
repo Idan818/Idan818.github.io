@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Idan Weiss - AI Product Manager portfolio">
+<title>Idan Weiss | AI Product</title>
+<style>
+:root{
+  --bg:#05070c;
+  --panel:#0b1019;
+  --panel2:#0e1522;
+  --text:#f4f7fb;
+  --muted:#93a0b5;
+  --line:rgba(255,255,255,.095);
+  --purple:#8b5cf6;
+  --cyan:#43d9ff;
+  --green:#5df0bd;
+  --amber:#ffcd70;
+  --red:#ff6b7a;
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(139,92,246,.17),transparent 30%),
+    radial-gradient(circle at 90% 13%,rgba(67,217,255,.11),transparent 28%),
+    linear-gradient(180deg,#05070c 0%,#070b12 48%,#05070c 100%);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.55;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 42px));margin:auto;position:relative}
+.noise{
+  pointer-events:none;position:fixed;inset:0;z-index:50;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+.cursor-glow{
+  position:fixed;left:0;top:0;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.095),rgba(67,217,255,.035) 40%,transparent 68%);
+  pointer-events:none;transform:translate(-50%,-50%);z-index:0;filter:blur(12px);
+}
+#net{
+  position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.7;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  background:rgba(5,7,12,.57);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav{
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-size:14px;font-weight:950;letter-spacing:.08em}
+.brand .slash{color:var(--green)}
+.navlinks{display:flex;gap:24px;color:#abb6c8;font-size:13px}
+.navlinks a{transition:.25s}.navlinks a:hover{color:#fff}
+.status{
+  display:flex;align-items:center;gap:8px;color:#c9f8e6;font-size:12px;
+}
+.status i{
+  width:8px;height:8px;border-radius:50%;background:var(--green);display:block;
+  box-shadow:0 0 0 0 rgba(93,240,189,.6);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(93,240,189,.45)}70%{box-shadow:0 0 0 9px rgba(93,240,189,0)}100%{box-shadow:0 0 0 0 rgba(93,240,189,0)}}
+
+.hero{
+  min-height:100vh;display:flex;align-items:center;position:relative;padding:125px 0 70px;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.16fr .84fr;gap:48px;align-items:center;position:relative;z-index:2;
+}
+.kicker{
+  display:inline-flex;gap:9px;align-items:center;
+  padding:8px 12px;border:1px solid rgba(93,240,189,.25);
+  border-radius:999px;background:rgba(93,240,189,.05);
+  color:#baf7e2;font-weight:850;font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+}
+.kicker b{width:7px;height:7px;border-radius:50%;background:var(--green);display:block}
+h1{
+  font-size:clamp(54px,7.1vw,96px);
+  line-height:.94;letter-spacing:-.058em;margin:23px 0 25px;max-width:850px;
+}
+.shine{
+  background:linear-gradient(90deg,#fff 0%,#b7a8ff 35%,#72edd0 67%,#6fd5ff 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shine 8s linear infinite;
+}
+@keyframes shine{to{background-position:-200% 0}}
+.hero p{
+  max-width:760px;color:#bdc7d7;font-size:clamp(18px,2vw,23px);margin:0 0 30px;
+}
+.actions{display:flex;gap:11px;flex-wrap:wrap}
+.btn{
+  border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;
+  padding:13px 17px;border-radius:13px;font-size:13px;font-weight:850;cursor:pointer;
+  transition:.2s transform,.2s border-color,.2s background;
+}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.2)}
+.btn.primary{
+  border-color:transparent;
+  background:linear-gradient(135deg,#8157ef,#613edf);
+  box-shadow:0 16px 44px rgba(118,76,230,.25);
+}
+.hero-visual{position:relative;min-height:530px;perspective:1100px}
+.orbit-wrap{
+  position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:440px;height:440px;
+}
+.orbit{
+  position:absolute;inset:0;border:1px solid rgba(255,255,255,.09);border-radius:50%;
+  animation:spin 22s linear infinite;
+}
+.orbit.o2{inset:42px;animation-duration:16s;animation-direction:reverse;border-style:dashed}
+.orbit.o3{inset:90px;animation-duration:11s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.node{
+  position:absolute;width:94px;height:94px;border-radius:24px;
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  border:1px solid var(--line);backdrop-filter:blur(12px);
+  display:grid;place-items:center;text-align:center;
+  font-weight:900;font-size:11px;color:#d9e0eb;
+  box-shadow:0 20px 55px rgba(0,0,0,.28);
+  transform-style:preserve-3d;
+  animation:float 6s ease-in-out infinite;
+}
+.node small{display:block;color:var(--muted);font-weight:700;font-size:9px;margin-top:3px}
+.node.n1{left:2%;top:18%;animation-delay:-1s}
+.node.n2{right:1%;top:18%;animation-delay:-3s}
+.node.n3{left:5%;bottom:13%;animation-delay:-4s}
+.node.n4{right:4%;bottom:12%;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-12px) rotateX(2deg) rotateY(-2deg)}}
+.core{
+  position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);
+  width:175px;height:175px;border-radius:42px;
+  background:
+    radial-gradient(circle at 35% 28%,rgba(255,255,255,.23),transparent 25%),
+    linear-gradient(145deg,#17102c,#0a1930 55%,#071816);
+  border:1px solid rgba(255,255,255,.18);
+  display:grid;place-items:center;text-align:center;
+  box-shadow:0 0 80px rgba(139,92,246,.2),0 0 100px rgba(67,217,255,.08);
+}
+.core strong{font-size:28px;letter-spacing:-.04em}
+.core span{display:block;color:#9da9be;font-size:10px;margin-top:4px}
+/* animated AI product network */
+.orbit-particle{
+  position:absolute;left:50%;top:48%;width:10px;height:10px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 16px var(--cyan),0 0 28px rgba(67,217,255,.35);
+  transform-origin:0 0;z-index:4;
+}
+.op1{animation:orbitParticle1 7s linear infinite}
+.op2{animation:orbitParticle2 9s linear infinite reverse;background:var(--green);box-shadow:0 0 16px var(--green)}
+.op3{animation:orbitParticle3 11s linear infinite;background:#b497ff;box-shadow:0 0 16px #8b5cf6}
+.op4{animation:orbitParticle4 6s linear infinite reverse;background:#ffcd70;box-shadow:0 0 16px #ffcd70}
+@keyframes orbitParticle1{from{transform:rotate(0deg) translateX(218px) rotate(0deg)}to{transform:rotate(360deg) translateX(218px) rotate(-360deg)}}
+@keyframes orbitParticle2{from{transform:rotate(0deg) translateX(176px) rotate(0deg)}to{transform:rotate(360deg) translateX(176px) rotate(-360deg)}}
+@keyframes orbitParticle3{from{transform:rotate(0deg) translateX(132px) rotate(0deg)}to{transform:rotate(360deg) translateX(132px) rotate(-360deg)}}
+@keyframes orbitParticle4{from{transform:rotate(0deg) translateX(88px) rotate(0deg)}to{transform:rotate(360deg) translateX(88px) rotate(-360deg)}}
+
+.pulse-line{
+  position:absolute;height:2px;left:50%;top:48%;width:138px;transform-origin:left center;
+  background:linear-gradient(90deg,rgba(139,92,246,0),rgba(93,240,189,.9),rgba(67,217,255,0));
+  filter:drop-shadow(0 0 8px rgba(93,240,189,.55));opacity:0;z-index:3;
+}
+.pl1{transform:rotate(-145deg);animation:pulseBeam 4.4s .2s infinite}
+.pl2{transform:rotate(-35deg);animation:pulseBeam 4.4s 1.2s infinite}
+.pl3{transform:rotate(145deg);animation:pulseBeam 4.4s 2.2s infinite}
+.pl4{transform:rotate(35deg);animation:pulseBeam 4.4s 3.2s infinite}
+@keyframes pulseBeam{
+  0%,72%,100%{opacity:0;clip-path:inset(0 100% 0 0)}
+  12%{opacity:.15}
+  28%{opacity:.9;clip-path:inset(0 0 0 0)}
+  48%{opacity:0;clip-path:inset(0 0 0 100%)}
+}
+
+.hero-strip{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:min(900px,90%);
+  border:1px solid var(--line);border-radius:14px;background:rgba(8,12,19,.76);
+  backdrop-filter:blur(10px);overflow:hidden;z-index:3;
+}
+.marquee{display:flex;width:max-content;animation:marquee 20s linear infinite}
+.marquee span{padding:10px 18px;font-size:11px;color:#aeb8ca;border-right:1px solid var(--line)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+section{padding:92px 0;position:relative;z-index:2}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#95efd4;font-weight:900;margin-bottom:9px}
+.head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:32px}
+.head h2{font-size:clamp(34px,4.4vw,54px);letter-spacing:-.045em;line-height:1.02;margin:0;max-width:700px}
+.head p{max-width:610px;color:var(--muted);margin:0;font-size:15px}
+.card{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  border-radius:22px;overflow:hidden;
+}
+.bento{
+  display:grid;
+  grid-template-columns:1.12fr .88fr .88fr;
+  grid-template-rows:270px 250px;
+  gap:16px;
+}
+.bento .card{padding:23px;position:relative}
+.bento .large{grid-row:span 2}
+.card-title{font-size:12px;color:#d7deea;font-weight:900;letter-spacing:.04em}
+.card-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.big-number{font-size:64px;letter-spacing:-.055em;font-weight:950;margin-top:26px}
+.big-number small{font-size:18px;color:#91a0b7}
+.spark{position:absolute;left:20px;right:20px;bottom:20px;height:92px}
+.spark svg{width:100%;height:100%;overflow:visible}
+.line-draw{stroke-dasharray:500;stroke-dashoffset:500;animation:draw 2.7s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.donut{width:145px;height:145px;margin:26px auto 0;position:relative}
+.donut svg{transform:rotate(-90deg)}
+.donut .value{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.donut .value b{font-size:31px}.donut .value span{display:block;font-size:9px;color:var(--muted)}
+.ticker{position:absolute;right:18px;bottom:16px;font:11px ui-monospace,monospace;color:#9db1ca}
+.mini-list{display:grid;gap:11px;margin-top:22px}
+.mini-row{display:grid;grid-template-columns:100px 1fr 38px;gap:10px;align-items:center;font-size:10px}
+.mini-row .bar{height:7px;border-radius:999px;background:#182034;overflow:hidden}
+.mini-row .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--green))}
+.live-log{margin-top:18px;background:#05080e;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:13px;height:140px;overflow:hidden;font:11px/1.7 ui-monospace,monospace;color:#9eb0c7}
+.log-item{opacity:0;animation:logIn .4s forwards}
+@keyframes logIn{to{opacity:1}}
+
+.case-shell{display:grid;grid-template-columns:220px 1fr;gap:18px}
+.case-nav{padding:14px;height:max-content;position:sticky;top:92px}
+.case-btn{
+  width:100%;text-align:left;border:0;background:transparent;color:#98a5ba;
+  padding:12px;border-radius:11px;cursor:pointer;font-size:12px;font-weight:800;
+}
+.case-btn.on{background:rgba(139,92,246,.14);color:#fff}
+.case-main{padding:0}
+.case-hero{
+  padding:30px;min-height:345px;position:relative;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:34px;align-items:center;
+  background:
+    radial-gradient(circle at 82% 20%,rgba(93,240,189,.13),transparent 25%),
+    radial-gradient(circle at 20% 10%,rgba(139,92,246,.18),transparent 32%),
+    linear-gradient(180deg,#0c1220,#0a0f18);
+}
+.case-copy{min-width:0;position:relative;z-index:3}
+.case-hero h3{font-size:clamp(28px,3vw,38px);letter-spacing:-.035em;margin:8px 0 10px;max-width:720px}
+.case-hero p{color:#aeb9cc;max-width:680px}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tag{padding:7px 9px;border:1px solid var(--line);border-radius:999px;font-size:10px;color:#cad2e1;background:rgba(255,255,255,.025)}
+.arch{
+  position:relative;right:auto;bottom:auto;width:100%;max-width:430px;height:auto;aspect-ratio:430/165;opacity:.94;justify-self:end;z-index:2;
+}
+.arch-node{
+  position:absolute;width:24.2%;padding:10px 5px;border:1px solid var(--line);border-radius:12px;
+  background:#0b111d;text-align:center;font-size:10px;font-weight:850;box-shadow:0 10px 30px rgba(0,0,0,.25)
+}
+.arch-node b{display:block;color:#fff}.arch-node span{color:#7f8da4;font-size:8px}
+.a1{left:0;top:32.7%}.a2{left:33.7%;top:7.3%}.a3{left:33.7%;top:59.4%}.a4{right:0;top:32.7%}
+.arch-line{display:none}
+.l1{left:101px;top:82px;width:75px;transform:rotate(-24deg)}
+.l2{left:101px;top:86px;width:75px;transform:rotate(24deg)}
+.l3{left:248px;top:39px;width:84px;transform:rotate(24deg)}
+.l4{left:248px;top:124px;width:84px;transform:rotate(-24deg)}
+.arch-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:2;pointer-events:none}
+.case-body{padding:28px}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.insight{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.022)}
+.insight .n{font-size:10px;color:#7f8da4}.insight h4{margin:12px 0 7px;font-size:17px}.insight p{color:var(--muted);font-size:12px;margin:0}
+
+.sim{
+  display:grid;grid-template-columns:.88fr 1.12fr;gap:16px;
+}
+.controls{padding:22px}
+.control-title{font-size:12px;color:#e0e6ef;font-weight:900;margin-bottom:14px}
+.control{margin-bottom:18px}
+.control label{display:block;color:#8e9cb2;font-size:10px;margin-bottom:7px}
+.segment{display:flex;gap:6px}
+.segment button{
+  flex:1;border:1px solid var(--line);background:#0c1220;color:#9eabc0;padding:9px 7px;border-radius:9px;cursor:pointer;font-size:10px;font-weight:800;
+}
+.segment button.on{background:rgba(67,217,255,.12);border-color:rgba(67,217,255,.34);color:#fff}
+.range{width:100%;accent-color:var(--purple)}
+.sim-output{padding:0;min-height:430px}
+.sim-top{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.sim-top span{font-size:11px;color:#9ca9bd}.riskbadge{font-size:10px;padding:6px 8px;border-radius:999px;border:1px solid var(--line)}
+.chat{padding:20px;display:grid;gap:12px}
+.bubble{max-width:82%;padding:12px 14px;border-radius:14px;font-size:12px}
+.bubble.user{justify-self:end;background:#1a2640;color:#d9e4f5;border-bottom-right-radius:5px}
+.bubble.ai{background:#0d1421;border:1px solid var(--line);border-bottom-left-radius:5px;color:#c4cedd}
+.eval-panel{margin:0 20px 20px;border:1px solid var(--line);border-radius:14px;padding:14px;background:#070b12}
+.eval-row{display:grid;grid-template-columns:110px 1fr 34px;gap:10px;align-items:center;margin:9px 0;font-size:10px}
+.eval-row .bar{height:7px;border-radius:999px;background:#182034;overflow:hidden}
+.eval-row .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--green));transition:width .6s ease}
+
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
+.roadmap:before{content:"";position:absolute;left:7%;right:7%;top:23px;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));opacity:.45;z-index:0}
+.phase{position:relative;padding-top:47px;z-index:1}
+.phase:before{content:"";position:absolute;top:16px;left:18px;width:15px;height:15px;border-radius:50%;background:#08101b;border:3px solid var(--purple);z-index:2}
+.phase:nth-child(2):before{border-color:#7369ff}.phase:nth-child(3):before{border-color:var(--cyan)}.phase:nth-child(4):before{border-color:var(--green)}
+.phase .inner{border:1px solid var(--line);border-radius:16px;padding:17px;background:rgba(255,255,255,.025)}
+.phase .label{font-size:10px;color:#8290a8}.phase h4{margin:8px 0 7px}.phase p{font-size:11px;color:var(--muted);margin:0}
+
+.exp{display:grid;grid-template-columns:.88fr 1.12fr;gap:16px}
+.stack{padding:23px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.skill{font-size:10px;padding:7px 9px;border-radius:9px;border:1px solid var(--line);color:#c7d0df}
+.timeline{padding:23px}
+.role{display:grid;grid-template-columns:125px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+.role:first-child{border-top:0;padding-top:0}.role .yr{font-size:10px;color:#80e7c7;font-weight:900}.role h4{margin:0 0 5px}.role p{margin:0;color:var(--muted);font-size:12px}
+footer{padding:50px 0 70px;border-top:1px solid var(--line);position:relative;z-index:2}
+.foot{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}.foot strong{color:#fff}
+
+.reveal{opacity:0;transform:translateY(18px);transition:.65s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
+.tilt{transform-style:preserve-3d;transition:transform .15s ease}
+
+@media(max-width:1040px){
+  .hero-grid{grid-template-columns:1fr}.hero-visual{min-height:430px}.orbit-wrap{width:390px;height:390px}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.bento .large{grid-row:auto}
+  .case-shell{grid-template-columns:1fr}.case-nav{position:static;display:flex;overflow:auto}
+  .case-btn{min-width:max-content}
+  .case-hero{grid-template-columns:minmax(0,1fr) minmax(320px,390px);gap:22px;min-height:365px}
+  .arch{width:100%;max-width:390px;justify-self:end}
+  .sim,.exp{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .case-hero{grid-template-columns:minmax(0,1fr);min-height:auto}
+  .case-copy{width:100%;max-width:100%}
+  .arch{width:100%;max-width:430px;justify-self:center;margin-top:8px}
+}
+@media(max-width:720px){
+  .navlinks,.status{display:none}.signals{grid-template-columns:1fr 1fr}.hero-visual{min-height:370px}
+  .orbit-wrap{width:320px;height:320px}.node{width:78px;height:78px;border-radius:20px;font-size:9px}.core{width:140px;height:140px}
+  .bento,.case-grid,.roadmap{grid-template-columns:1fr}.roadmap:before{display:none}.phase,.roadmap-btn{padding-top:0}.phase:before{display:none}
+  .head{display:block}.head p{margin-top:12px}.foot{display:block}.arch{width:100%;max-width:430px;height:auto;transform:none;margin-bottom:0}.arch-node{font-size:8.5px;padding:8px 3px}.arch-node span{font-size:7px}
+}
+
+.loop-card{min-height:250px}
+.loop-viz{position:relative;height:185px;margin-top:8px}
+.loop-ring{
+  position:absolute;width:146px;height:146px;border-radius:50%;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 0 30px rgba(139,92,246,.05);
+}
+.loop-ring:before{
+  content:"";position:absolute;inset:-6px;border-radius:50%;
+  border:2px dashed rgba(93,240,189,.16);animation:spin 13s linear infinite;
+}
+.loop-runner{
+  position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 14px var(--green);
+  transform-origin:0 0;animation:loopRunner 8s linear infinite;
+}
+@keyframes loopRunner{from{transform:rotate(0deg) translateX(76px)}to{transform:rotate(360deg) translateX(76px)}}
+.loop-step{
+  position:absolute;width:62px;height:48px;border-radius:12px;border:1px solid var(--line);
+  background:#0b111c;color:#9da9bd;cursor:pointer;padding:5px;z-index:3;
+  transition:.25s transform,.25s border-color,.25s background;
+}
+.loop-step:hover,.loop-step.on{transform:scale(1.06);border-color:rgba(93,240,189,.45);background:rgba(93,240,189,.08);color:#fff}
+.loop-step b{display:block;font-size:9px;color:#7f8ba0}.loop-step span{font-size:10px;font-weight:900}
+.ls1{left:50%;top:3px;transform:translateX(-50%)}
+.ls1:hover,.ls1.on{transform:translateX(-50%) scale(1.06)}
+.ls2{right:7px;top:50%;transform:translateY(-50%)}
+.ls2:hover,.ls2.on{transform:translateY(-50%) scale(1.06)}
+.ls3{left:50%;bottom:1px;transform:translateX(-50%)}
+.ls3:hover,.ls3.on{transform:translateX(-50%) scale(1.06)}
+.ls4{left:7px;top:50%;transform:translateY(-50%)}
+.ls4:hover,.ls4.on{transform:translateY(-50%) scale(1.06)}
+.loop-center{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:120px;text-align:center;z-index:2;
+}
+.loop-center strong{display:block;font-size:13px}
+.loop-center span{display:block;color:var(--muted);font-size:8.5px;line-height:1.35;margin-top:4px}
+
+
+.roadmap-btn{
+  border:0;background:transparent;color:inherit;text-align:left;padding:47px 0 0;cursor:pointer;
+}
+.roadmap-btn .inner{transition:.25s transform,.25s border-color,.25s background}
+.roadmap-btn:hover .inner,.roadmap-btn.on .inner{
+  transform:translateY(-5px);border-color:rgba(67,217,255,.36);
+  background:linear-gradient(180deg,rgba(67,217,255,.08),rgba(255,255,255,.025));
+}
+.roadmap-detail{
+  margin-top:18px;padding:22px;position:relative;overflow:hidden;
+  transform:translateY(8px);opacity:0;animation:roadmapIn .45s ease forwards;
+}
+@keyframes roadmapIn{to{transform:none;opacity:1}}
+.roadmap-accent{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--purple),var(--cyan),var(--green))}
+.roadmap-detail-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.roadmap-detail h3{margin:6px 0 8px;font-size:26px;letter-spacing:-.03em}
+.roadmap-detail p{margin:0;color:var(--muted);font-size:13px;max-width:680px}
+.roadmap-kpis{display:grid;gap:9px}
+.roadmap-kpis div{border:1px solid var(--line);border-radius:12px;padding:11px;background:rgba(255,255,255,.022)}
+.roadmap-kpis span{display:block;color:#7f8ca2;font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+.roadmap-kpis b{font-size:12px}
+.roadmap-progress{height:5px;background:#141d2f;border-radius:999px;overflow:hidden;margin-top:18px}
+.roadmap-progress i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));transition:width .45s ease}
+
+
+.experience-map{display:grid;grid-template-columns:270px 1fr;gap:16px}
+.exp-role-nav{padding:12px;height:max-content}
+.exp-role-btn{
+  width:100%;text-align:left;border:0;background:transparent;color:#97a4b8;
+  padding:13px;border-radius:12px;cursor:pointer;transition:.22s;
+}
+.exp-role-btn:hover,.exp-role-btn.on{background:rgba(139,92,246,.13);color:#fff}
+.exp-role-btn span{display:block;font-size:9px;color:#6f7c91;margin-bottom:3px}
+.exp-role-btn b{display:block;font-size:12px}
+.exp-role-btn small{font-size:9px;color:#7f8da2}
+.exp-main{padding:24px}
+.exp-top{display:grid;grid-template-columns:1fr 190px;gap:20px;align-items:center}
+.exp-top h3{font-size:29px;margin:4px 0 8px;letter-spacing:-.03em}
+.exp-top p{margin:0;color:var(--muted);font-size:13px;max-width:650px}
+.exp-orbit{
+  width:176px;height:176px;aspect-ratio:1/1;position:relative;justify-self:center;align-self:center;
+}
+.exp-orbit-ring{
+  position:absolute;width:142px;height:142px;aspect-ratio:1/1;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:1px dashed rgba(67,217,255,.28);animation:expSpin 11s linear infinite;
+  box-shadow:inset 0 0 36px rgba(67,217,255,.035);
+}
+
+@keyframes expSpin{
+  from{transform:translate(-50%,-50%) rotate(0deg)}
+  to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+.exp-orbit-ring:before,.exp-orbit-ring:after{
+  content:"";position:absolute;width:8px;height:8px;aspect-ratio:1/1;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)
+}
+.exp-orbit-ring:before{left:10px;top:24px}.exp-orbit-ring:after{right:10px;bottom:24px;background:var(--purple);box-shadow:0 0 12px var(--purple)}
+.exp-orbit-core{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:94px;height:94px;aspect-ratio:1/1;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.11);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.08),rgba(139,92,246,.055) 45%,rgba(5,9,15,.7));
+  font-size:28px;font-weight:950;letter-spacing:-.04em;text-align:center;
+  box-shadow:0 0 32px rgba(139,92,246,.08);
+}
+.exp-orbit-caption{
+  position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);font-size:9px;color:#8593aa;white-space:nowrap;
+  background:#09101a;border:1px solid var(--line);padding:4px 8px;border-radius:999px;z-index:3;
+}
+.choose-role-hint{font-size:14px!important;color:#c4ccda!important;font-weight:750}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.proof{border:1px solid var(--line);border-radius:13px;padding:13px;background:rgba(255,255,255,.022);transition:.25s transform}
+.proof:hover{transform:translateY(-4px)}
+.proof span{display:block;color:#76849a;text-transform:uppercase;letter-spacing:.08em;font-size:8px}
+.proof b{display:block;font-size:14px;margin:4px 0}
+.proof small{display:block;color:#8997ac;font-size:9px}
+.exp-bottom{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.heatmap{display:grid;gap:9px;margin-top:12px}
+.heat-row{display:grid;grid-template-columns:130px 1fr 28px;gap:10px;align-items:center;font-size:10px}
+.heat-row .track{height:8px;background:#141d2f;border-radius:999px;overflow:hidden}
+.heat-row .track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));transition:width .55s ease}
+.system-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.system-chip{border:1px solid var(--line);padding:8px 10px;border-radius:10px;font-size:10px;color:#c3cddd;background:#0b111c;animation:chipIn .35s both}
+@keyframes chipIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:980px){.experience-map{grid-template-columns:1fr}.exp-role-nav{display:flex;overflow:auto}.exp-role-btn{min-width:220px}.proof-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.exp-top,.exp-bottom{grid-template-columns:1fr}.proof-grid{grid-template-columns:1fr 1fr}.exp-orbit{margin-top:6px}}
+
+
+.contact-modal{
+  position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;
+}
+.contact-modal.open{display:flex}
+.contact-backdrop{
+  position:absolute;inset:0;background:rgba(2,5,10,.74);backdrop-filter:blur(10px);
+  animation:fadeIn .22s ease forwards;
+}
+.contact-panel{
+  position:relative;z-index:2;width:min(520px,100%);border:1px solid var(--line);
+  border-radius:22px;background:linear-gradient(180deg,#0e1523,#0a101a);
+  padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.45);
+  transform:translateY(15px) scale(.98);opacity:0;animation:contactIn .28s ease forwards;
+}
+@keyframes contactIn{to{transform:none;opacity:1}}
+@keyframes fadeIn{to{opacity:1}}
+.contact-panel h3{font-size:31px;letter-spacing:-.035em;margin:4px 0 9px}
+.contact-panel p{color:var(--muted);font-size:13px;margin:0 0 20px}
+.contact-close{
+  position:absolute;right:16px;top:13px;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--line);background:#0a1019;color:#c9d2e1;cursor:pointer;font-size:20px;
+}
+.contact-email-box{
+  border:1px solid var(--line);border-radius:14px;padding:14px 15px;background:#080d15;margin-bottom:16px;
+}
+.contact-email-box span{display:block;font-size:9px;color:#79879d;text-transform:uppercase;letter-spacing:.1em}
+.contact-email-box strong{display:block;font-size:17px;margin-top:3px}
+.contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+.copy-status{display:block;color:#89e6c8;font-size:10px;min-height:16px;margin-top:8px}
+.footer-contact-actions{display:flex;gap:7px;margin-top:7px}
+.mini-contact-btn{
+  border:1px solid var(--line);background:#0b111b;color:#c8d1df;padding:6px 9px;border-radius:8px;
+  font-size:9px;cursor:pointer;
+}
+.mini-contact-btn:hover{border-color:rgba(93,240,189,.35);color:#fff}
+body.modal-open{overflow:hidden}
+
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<nav>
+  <div class="wrap nav">
+    <div class="brand">IDAN WEISS <span class="slash">/ AI PRODUCT</span></div>
+    <div class="navlinks">
+      <a href="#dashboard">Signal</a>
+      <a href="#case">Case study</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <div class="status"><i></i> Available for product roles</div>
+  </div>
+</nav>
+
+<header class="hero">
+<canvas id="net"></canvas>
+<div class="wrap hero-grid">
+  <div>
+    <div class="kicker"><b></b> Product Manager with AI product depth</div>
+    <h1>I design how AI <span class="shine">behaves inside a product.</span></h1>
+    <p>My strength is the connection between product thinking, real operational workflows, data quality, QA and AI. I do not treat AI as a magic box. I define the problem, the context, the failure modes, the evaluation method and the human handoff.</p>
+    <div class="actions">
+      <a class="btn primary" href="#case">Open the case study</a>
+      <a class="btn" href="#simulator">Run the AI simulator</a>
+      <button class="btn" id="openContactHero" type="button">Contact me</button>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="orbit-wrap" id="orbitWrap">
+      <div class="orbit"></div>
+      <div class="orbit o2"></div>
+      <div class="orbit o3"></div>
+
+      <div class="node n1 tilt"><div>USER NEED<small>Problem signal</small></div></div>
+      <div class="node n2 tilt"><div>CONTEXT<small>Trusted data</small></div></div>
+      <div class="node n3 tilt"><div>EVALUATION<small>Evals + edge cases</small></div></div>
+      <div class="node n4 tilt"><div>HUMAN LOOP<small>Approval + fallback</small></div></div>
+
+      <div class="core"><div><strong>AI PRODUCT</strong><span>Behavior, quality, value</span></div></div>
+      <div class="orbit-particle op1"></div>
+      <div class="orbit-particle op2"></div>
+      <div class="orbit-particle op3"></div>
+      <div class="orbit-particle op4"></div>
+      <div class="pulse-line pl1"></div>
+      <div class="pulse-line pl2"></div>
+      <div class="pulse-line pl3"></div>
+      <div class="pulse-line pl4"></div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-strip">
+  <div class="marquee">
+    <span>Product discovery</span><span>Prompt design</span><span>Evaluation</span><span>Hallucination control</span><span>Human in the loop</span><span>Data quality</span><span>Manual QA</span><span>Requirements</span><span>Metrics</span>
+    <span>Product discovery</span><span>Prompt design</span><span>Evaluation</span><span>Hallucination control</span><span>Human in the loop</span><span>Data quality</span><span>Manual QA</span><span>Requirements</span><span>Metrics</span>
+  </div>
+</div>
+</header>
+
+<section id="dashboard" class="reveal">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Product signal dashboard</div><h2>Not a list of buzzwords. A working model of how I think.</h2></div>
+    <p>This section visualizes the parts I care about when I evaluate an AI product: product value, model behavior, quality, risk and operational fit.</p>
+  </div>
+
+  <div class="bento">
+    <div class="card large tilt">
+      <div class="card-title">AI Product Quality Index</div>
+      <div class="card-sub">Composite score used in this portfolio demo</div>
+      <div class="big-number"><span class="count" data-to="87">0</span><small>/100</small></div>
+      <div class="mini-list">
+        <div class="mini-row"><span>Task success</span><div class="bar"><i style="width:91%"></i></div><b>91</b></div>
+        <div class="mini-row"><span>Groundedness</span><div class="bar"><i style="width:88%"></i></div><b>88</b></div>
+        <div class="mini-row"><span>Human control</span><div class="bar"><i style="width:95%"></i></div><b>95</b></div>
+        <div class="mini-row"><span>Latency fit</span><div class="bar"><i style="width:76%"></i></div><b>76</b></div>
+      </div>
+      <div class="spark">
+        <svg viewBox="0 0 500 100" preserveAspectRatio="none">
+          <defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#5df0bd"/></linearGradient></defs>
+          <path class="line-draw" d="M0 78 C45 70 60 25 110 48 S180 85 220 45 S300 34 340 54 S410 29 500 15" fill="none" stroke="url(#sg)" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card tilt">
+      <div class="card-title">Human Review Coverage</div>
+      <div class="card-sub">High impact actions stay gated</div>
+      <div class="donut">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#172033" stroke-width="10"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="#5df0bd" stroke-linecap="round" stroke-width="10" stroke-dasharray="301.6" stroke-dashoffset="45"/>
+        </svg>
+        <div class="value"><div><b>85%</b><span>approval coverage</span></div></div>
+      </div>
+      <div class="ticker">policy: sensitive action -> review</div>
+    </div>
+
+    <div class="card tilt">
+      <div class="card-title">Failure Taxonomy</div>
+      <div class="card-sub">What I want the product to detect</div>
+      <div class="mini-list">
+        <div class="mini-row"><span>Hallucination</span><div class="bar"><i style="width:82%"></i></div><b>82</b></div>
+        <div class="mini-row"><span>Wrong routing</span><div class="bar"><i style="width:64%"></i></div><b>64</b></div>
+        <div class="mini-row"><span>Missing context</span><div class="bar"><i style="width:75%"></i></div><b>75</b></div>
+        <div class="mini-row"><span>Over automation</span><div class="bar"><i style="width:58%"></i></div><b>58</b></div>
+      </div>
+    </div>
+
+    <div class="card tilt">
+      <div class="card-title">Live Eval Feed</div>
+      <div class="card-sub">Simulated product events</div>
+      <div class="live-log" id="liveLog"></div>
+    </div>
+
+    <div class="card tilt loop-card">
+      <div class="card-title">Product Thinking Loop</div>
+      <div class="card-sub">The loop keeps moving after launch</div>
+      <div class="loop-viz">
+        <div class="loop-ring"></div>
+        <div class="loop-runner"></div>
+        <button class="loop-step ls1 on" data-loop="0"><b>01</b><span>Problem</span></button>
+        <button class="loop-step ls2" data-loop="1"><b>02</b><span>Behavior</span></button>
+        <button class="loop-step ls3" data-loop="2"><b>03</b><span>Evaluate</span></button>
+        <button class="loop-step ls4" data-loop="3"><b>04</b><span>Iterate</span></button>
+        <div class="loop-center"><strong id="loopTitle">Problem</strong><span id="loopText">Start with a real user job and measurable pain.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="case" class="reveal">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Deep case study</div><h2>Supplier Support Copilot</h2></div>
+    <p>A portfolio concept built from a problem I understand well: large volumes of supplier requests, inconsistent information, routing delays and repeated manual investigation.</p>
+  </div>
+
+  <div class="case-shell">
+    <div class="card case-nav">
+      <button class="case-btn on" data-case="problem">01 Problem</button>
+      <button class="case-btn" data-case="users">02 Users</button>
+      <button class="case-btn" data-case="architecture">03 Architecture</button>
+      <button class="case-btn" data-case="evaluation">04 Evaluation</button>
+      <button class="case-btn" data-case="metrics">05 Metrics</button>
+    </div>
+
+    <div class="card case-main">
+      <div class="case-hero">
+        <div class="case-copy">
+          <div class="eyebrow" id="caseLabel">01 Problem</div>
+          <h3 id="caseTitle">Too much time is spent understanding the request before solving it.</h3>
+          <p id="caseDesc">The product opportunity is not to replace support. It is to reduce the manual work around intake, classification, context gathering and first response preparation.</p>
+          <div class="case-tags" id="caseTags">
+            <span class="tag">Support operations</span><span class="tag">LLM classification</span><span class="tag">Human approval</span><span class="tag">Structured output</span>
+          </div>
+        </div>
+
+        <div class="arch">
+          <div class="arch-node a1"><b>Incoming request</b><span>Email / CRM</span></div>
+          <div class="arch-node a2"><b>AI triage</b><span>Intent + summary</span></div>
+          <div class="arch-node a3"><b>Context check</b><span>Known vs missing</span></div>
+          <div class="arch-node a4"><b>Human agent</b><span>Approve / edit / send</span></div>
+          <svg class="arch-svg" viewBox="0 0 430 165" preserveAspectRatio="none" aria-hidden="true">
+            <path id="pathTop" d="M104 82 C126 74 134 34 145 34 C235 34 274 76 326 76" fill="none" stroke="rgba(67,217,255,.38)" stroke-width="2"/>
+            <path id="pathBottom" d="M104 86 C126 96 134 120 145 120 C235 120 274 78 326 78" fill="none" stroke="rgba(93,240,189,.34)" stroke-width="2"/>
+            <circle r="4" fill="#5df0bd" filter="url(#glowDot)">
+              <animateMotion dur="3.4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathTop"/>
+              </animateMotion>
+            </circle>
+            <circle r="4" fill="#43d9ff">
+              <animateMotion dur="3.4s" begin="1.7s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#pathBottom"/>
+              </animateMotion>
+            </circle>
+            <defs>
+              <filter id="glowDot"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <div class="case-grid" id="caseGrid">
+          <div class="insight"><div class="n">Signal</div><h4>Repeated triage work</h4><p>Agents repeatedly read, classify and summarize similar requests before they can start solving them.</p></div>
+          <div class="insight"><div class="n">Risk</div><h4>False certainty</h4><p>The AI must never invent system status or root cause when the relevant evidence is missing.</p></div>
+          <div class="insight"><div class="n">MVP</div><h4>Recommend, do not act</h4><p>Start with classification, summary and suggested routing. Keep sensitive actions behind human approval.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="simulator" class="reveal">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Interactive AI product simulator</div><h2>Change the product conditions and watch the behavior change.</h2></div>
+    <p>This is a front end simulation. It demonstrates decision logic: context quality, task sensitivity and human review should affect what the AI is allowed to do.</p>
+  </div>
+
+  <div class="sim">
+    <div class="card controls">
+      <div class="control-title">Product controls</div>
+
+      <div class="control">
+        <label>Context quality</label>
+        <div class="segment" id="contextSeg">
+          <button data-v="low">Low</button><button class="on" data-v="medium">Medium</button><button data-v="high">High</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <label>Task sensitivity</label>
+        <div class="segment" id="riskSeg">
+          <button data-v="low">Low</button><button class="on" data-v="medium">Medium</button><button data-v="high">High</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <label>Human review threshold</label>
+        <input class="range" id="reviewRange" type="range" min="0" max="100" value="72">
+        <div style="display:flex;justify-content:space-between;color:#7f8ca1;font-size:9px;margin-top:5px"><span>More automation</span><span>More review</span></div>
+      </div>
+
+      <div class="insight" style="margin-top:22px">
+        <div class="n">Product rule</div>
+        <h4 id="policyTitle">Recommend + human approval</h4>
+        <p id="policyDesc">The AI may summarize and recommend next steps, but a person approves the final action.</p>
+      </div>
+    </div>
+
+    <div class="card sim-output">
+      <div class="sim-top">
+        <span>SUPPLIER SUPPORT COPILOT / RUN 024</span>
+        <span class="riskbadge" id="riskBadge">MEDIUM RISK</span>
+      </div>
+      <div class="chat">
+        <div class="bubble user">The school sent the file yesterday. The dashboard still shows missing data. Please fix it.</div>
+        <div class="bubble ai" id="aiBubble">I can summarize the issue and recommend the next checks. I should not change data without confirming the ingestion status and validating the source.</div>
+      </div>
+      <div class="eval-panel">
+        <div class="eval-row"><span>Groundedness</span><div class="bar"><i id="gBar" style="width:88%"></i></div><b id="gVal">88</b></div>
+        <div class="eval-row"><span>Usefulness</span><div class="bar"><i id="uBar" style="width:91%"></i></div><b id="uVal">91</b></div>
+        <div class="eval-row"><span>Automation allowed</span><div class="bar"><i id="aBar" style="width:42%"></i></div><b id="aVal">42</b></div>
+        <div class="eval-row"><span>Human review need</span><div class="bar"><i id="hBar" style="width:72%"></i></div><b id="hVal">72</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="roadmap" class="reveal">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Delivery roadmap</div><h2>How I would move it from idea to production.</h2></div>
+    <p>I would not start with full automation. The product earns more autonomy only after the data, failure modes and human feedback support it.</p>
+  </div>
+
+  <div class="roadmap">
+    <button class="phase roadmap-btn on" data-phase="0"><div class="inner"><div class="label">Phase 1</div><h4>Shadow mode</h4><p>AI observes and scores without affecting operations.</p></div></button>
+    <button class="phase roadmap-btn" data-phase="1"><div class="inner"><div class="label">Phase 2</div><h4>Assist mode</h4><p>AI recommends. Humans approve every action.</p></div></button>
+    <button class="phase roadmap-btn" data-phase="2"><div class="inner"><div class="label">Phase 3</div><h4>Selective automation</h4><p>Only low risk cases can auto-route.</p></div></button>
+    <button class="phase roadmap-btn" data-phase="3"><div class="inner"><div class="label">Phase 4</div><h4>Optimize</h4><p>Failures become training and eval inputs.</p></div></button>
+  </div>
+
+  <div class="roadmap-detail card" id="roadmapDetail">
+    <div class="roadmap-accent"></div>
+    <div class="roadmap-detail-grid">
+      <div>
+        <div class="eyebrow" id="roadmapLabel">PHASE 1 / SHADOW MODE</div>
+        <h3 id="roadmapTitle">Prove quality before touching the workflow.</h3>
+        <p id="roadmapDesc">The AI runs quietly in the background. Its outputs are compared with real human decisions so we can build an error taxonomy and baseline quality.</p>
+      </div>
+      <div class="roadmap-kpis" id="roadmapKpis">
+        <div><span>Primary output</span><b>Evaluation dataset</b></div>
+        <div><span>Go / no-go gate</span><b>Stable routing quality</b></div>
+        <div><span>Human risk</span><b>Zero operational impact</b></div>
+      </div>
+    </div>
+    <div class="roadmap-progress"><i id="roadmapProgress" style="width:25%"></i></div>
+  </div>
+</div>
+</section>
+
+<section id="experience" class="reveal">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Real world foundation</div><h2>My background is a system of evidence, not a paragraph.</h2></div>
+    <p class="choose-role-hint">Choose a role.</p>
+  </div>
+
+  <div class="experience-map">
+    <div class="card exp-role-nav">
+      <button class="exp-role-btn on" data-role="moe">
+        <span>2022 - 2025</span><b>Ministry of Education</b><small>Product Manager / Web System Owner</small>
+      </button>
+      <button class="exp-role-btn" data-role="globale">
+        <span>2025 - 2026</span><b>Global-e Online</b><small>Restrictions Analyst</small>
+      </button>
+      <button class="exp-role-btn" data-role="courts">
+        <span>2026 - Present</span><b>Courts Administration</b><small>Systems Permissions Manager</small>
+      </button>
+    </div>
+
+    <div class="card exp-main">
+      <div class="exp-top">
+        <div>
+          <div class="eyebrow" id="expEyebrow">PRODUCT + QUALITY + SCALE</div>
+          <h3 id="expTitle">National education web system</h3>
+          <p id="expSummary">Owned a national data intake system and connected user needs, external vendors, requirements, implementation, QA and data quality.</p>
+        </div>
+        <div class="exp-orbit">
+          <div class="exp-orbit-ring"></div>
+          <div class="exp-orbit-core" id="expCore">1M+</div>
+          <div class="exp-orbit-caption" id="expCoreLabel">records monitored</div>
+        </div>
+      </div>
+
+      <div class="proof-grid" id="proofGrid">
+        <div class="proof"><span>Scale</span><b>250+ vendors</b><small>External technology interfaces</small></div>
+        <div class="proof"><span>Quality</span><b>Manual QA</b><small>Error investigation and validation</small></div>
+        <div class="proof"><span>Product</span><b>Requirements</b><small>User and vendor needs to specs</small></div>
+        <div class="proof"><span>Delivery</span><b>Go-live</b><small>Implementation and issue follow-up</small></div>
+      </div>
+
+      <div class="exp-bottom">
+        <div>
+          <div class="card-title">Capability heatmap</div>
+          <div class="heatmap" id="heatmap"></div>
+        </div>
+        <div>
+          <div class="card-title">Systems and working environment</div>
+          <div class="system-cloud" id="systemCloud"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<div class="contact-modal" id="contactModal" aria-hidden="true">
+  <div class="contact-backdrop" id="contactBackdrop"></div>
+  <div class="contact-panel">
+    <button class="contact-close" id="contactClose" type="button" aria-label="Close">×</button>
+    <div class="eyebrow">Contact</div>
+    <h3>Let’s build something useful.</h3>
+    <p>If you want to discuss a Product Manager, AI Product or digital systems role, you can reach me directly.</p>
+
+    <div class="contact-email-box">
+      <span>Email</span>
+      <strong id="contactEmail">idanwess8@gmail.com</strong>
+    </div>
+
+    <div class="contact-actions">
+      <a class="btn primary" href="mailto:idanwess8@gmail.com?subject=Product%20Opportunity%20-%20Idan%20Weiss">Open email app</a>
+      <button class="btn" id="copyEmailModal" type="button">Copy email</button>
+    </div>
+    <div class="copy-status" id="copyModalStatus"></div>
+  </div>
+</div>
+
+<footer>
+<div class="wrap foot">
+  <div><strong>Idan Weiss</strong><br>Product Manager / AI Product Thinking / Digital Systems</div>
+  <div>
+  <strong>idanwess8@gmail.com</strong><br>
+  <div class="footer-contact-actions">
+    <button class="mini-contact-btn" id="openContactFooter" type="button">Contact</button>
+    <button class="mini-contact-btn" id="copyEmailFooter" type="button">Copy email</button>
+  </div>
+  <span id="copyFooterStatus" class="copy-status"></span>
+</div>
+</div>
+</footer>
+
+<script>
+const glow=document.getElementById('glow');
+window.addEventListener('mousemove',e=>{
+  glow.style.left=e.clientX+'px';
+  glow.style.top=e.clientY+'px';
+});
+
+const canvas=document.getElementById('net');
+const ctx=canvas.getContext('2d');
+let pts=[];
+function resize(){
+  canvas.width=canvas.offsetWidth*devicePixelRatio;
+  canvas.height=canvas.offsetHeight*devicePixelRatio;
+  ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  pts=Array.from({length:42},()=>({
+    x:Math.random()*canvas.offsetWidth,y:Math.random()*canvas.offsetHeight,
+    vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,canvas.offsetWidth,canvas.offsetHeight);
+  pts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>canvas.offsetWidth)p.vx*=-1;
+    if(p.y<0||p.y>canvas.offsetHeight)p.vy*=-1;
+  });
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);
+      if(d<145){
+        ctx.strokeStyle=`rgba(130,150,190,${(1-d/145)*.16})`;
+        ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();
+      }
+    }
+  }
+  pts.forEach(p=>{ctx.fillStyle='rgba(120,220,255,.34)';ctx.beginPath();ctx.arc(p.x,p.y,1.4,0,Math.PI*2);ctx.fill()});
+  requestAnimationFrame(draw);
+}
+resize();draw();window.addEventListener('resize',resize);
+
+document.querySelectorAll('.tilt').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateX(${y*-4}deg) rotateY(${x*5}deg) translateY(-2px)`;
+  });
+  el.addEventListener('mouseleave',()=>el.style.transform='');
+});
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      e.target.querySelectorAll('.count').forEach(c=>{
+        const target=+c.dataset.to;let n=0;
+        const t=setInterval(()=>{n+=Math.ceil(target/42);if(n>=target){n=target;clearInterval(t)}c.textContent=n},28);
+      });
+    }
+  })
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+
+const logs=[
+'[PASS] summary preserved known facts',
+'[FLAG] root cause unsupported by context',
+'[PASS] sensitive action requires approval',
+'[PASS] routing confidence 0.91',
+'[FLAG] missing supplier identifier',
+'[PASS] no personal data exposed'
+];
+let li=0;
+setInterval(()=>{
+  const box=document.getElementById('liveLog');
+  const d=document.createElement('div');d.className='log-item';d.textContent=logs[li%logs.length];
+  d.style.color=d.textContent.includes('FLAG')?'#ffcd70':'#91efcf';
+  box.appendChild(d);li++;
+  if(box.children.length>6)box.removeChild(box.firstChild);
+  box.scrollTop=box.scrollHeight;
+},1100);
+
+const caseData={
+  problem:{
+    label:'01 Problem',
+    title:'Too much time is spent understanding the request before solving it.',
+    desc:'The product opportunity is not to replace support. It is to reduce the manual work around intake, classification, context gathering and first response preparation.',
+    tags:['Support operations','LLM classification','Human approval','Structured output'],
+    cards:[
+      ['Signal','Repeated triage work','Agents repeatedly read, classify and summarize similar requests before they can start solving them.'],
+      ['Risk','False certainty','The AI must never invent system status or root cause when the relevant evidence is missing.'],
+      ['MVP','Recommend, do not act','Start with classification, summary and suggested routing. Keep sensitive actions behind human approval.']
+    ]
+  },
+  users:{
+    label:'02 Users',
+    title:'The main user is not the supplier. It is the person handling the supplier.',
+    desc:'The system should reduce cognitive load for the support agent while preserving accountability and giving the agent full visibility into what the AI inferred.',
+    tags:['Agent workflow','Explainability','Operational UX','Human control'],
+    cards:[
+      ['Primary user','Support agent','Needs a fast summary, likely category, missing information and next step.'],
+      ['Secondary user','Team lead','Needs visibility into errors, recurring categories and where AI suggestions are being corrected.'],
+      ['External user','Supplier','Benefits from faster and more consistent handling without needing to interact with AI directly.']
+    ]
+  },
+  architecture:{
+    label:'03 Architecture',
+    title:'The model should sit inside a controlled workflow, not outside it.',
+    desc:'The AI receives the request and trusted context, returns structured fields, then the product applies deterministic business rules before anything reaches the human agent.',
+    tags:['Trusted context','Structured output','Business rules','Audit trail'],
+    cards:[
+      ['Input','Request + metadata','Email or CRM content, supplier identifier, known account context and previous case history if allowed.'],
+      ['Model output','JSON structure','Intent, short summary, missing context, suggested routing, risk flags and draft response.'],
+      ['Product layer','Rules + audit','Confidence thresholds, approval requirements, audit log and deterministic routing rules.']
+    ]
+  },
+  evaluation:{
+    label:'04 Evaluation',
+    title:'I would build the evaluation set before trusting the feature.',
+    desc:'The dataset should include normal cases, ambiguous requests, missing context, contradictory information, sensitive actions and adversarial wording.',
+    tags:['Eval set','Error taxonomy','Edge cases','Offline testing'],
+    cards:[
+      ['Accuracy','Intent + routing','Did the model classify the case correctly and recommend the correct queue?'],
+      ['Groundedness','No invented facts','Did every specific claim come from the request or trusted context?'],
+      ['Safety','Correct handoff','Did high impact or uncertain cases move to human review instead of being automated?']
+    ]
+  },
+  metrics:{
+    label:'05 Metrics',
+    title:'A good model score is not enough. The product has to save real work.',
+    desc:'I would combine offline AI quality metrics with operational outcomes. The goal is not maximum automation. The goal is faster, more consistent handling without hidden correction cost.',
+    tags:['Task success','Handling time','Correction rate','Adoption'],
+    cards:[
+      ['Product metric','Handling time','How much time is saved per case after accounting for review and corrections?'],
+      ['Quality metric','Correction rate','How often does the agent need to change the summary, route or recommended next step?'],
+      ['Trust metric','Suggestion adoption','How often do agents accept suggestions, and where do they systematically ignore them?']
+    ]
+  }
+};
+document.querySelectorAll('.case-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.case-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+    const d=caseData[btn.dataset.case];
+    const title=document.getElementById('caseTitle');
+    title.style.opacity=0;title.style.transform='translateY(8px)';
+    setTimeout(()=>{
+      document.getElementById('caseLabel').textContent=d.label;
+      title.textContent=d.title;
+      document.getElementById('caseDesc').textContent=d.desc;
+      document.getElementById('caseTags').innerHTML=d.tags.map(x=>`<span class="tag">${x}</span>`).join('');
+      document.getElementById('caseGrid').innerHTML=d.cards.map(x=>`<div class="insight"><div class="n">${x[0]}</div><h4>${x[1]}</h4><p>${x[2]}</p></div>`).join('');
+      title.style.opacity=1;title.style.transform='';title.style.transition='.35s';
+    },170);
+  });
+});
+
+let context='medium',risk='medium';
+const review=document.getElementById('reviewRange');
+function setupSeg(id,setter){
+  document.querySelectorAll('#'+id+' button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');setter(b.dataset.v);updateSim();
+  }))
+}
+setupSeg('contextSeg',v=>context=v);
+setupSeg('riskSeg',v=>risk=v);
+review.addEventListener('input',updateSim);
+
+function updateSim(){
+  const c={low:42,medium:72,high:94}[context];
+  const r={low:25,medium:60,high:92}[risk];
+  const h=+review.value;
+  let grounded=Math.round(c*.82 + 17);
+  grounded=Math.min(98,grounded);
+  let useful=Math.round(68 + c*.22);
+  useful=Math.min(96,useful);
+  let allowed=Math.max(6,Math.round((100-r)*.55 + c*.15 - h*.18));
+  let human=Math.min(99,Math.round(r*.62 + h*.44 - c*.12));
+
+  let title,desc,text,badge,color;
+  if(risk==='high' || context==='low' || human>78){
+    title='Human review required';
+    desc='The AI may summarize the request and list checks, but it should not approve or execute the action.';
+    text='I can summarize the issue and identify the information needed. I do not have enough verified context to make or execute the requested change. A human reviewer should confirm the system status and source data first.';
+    badge='HIGH REVIEW';
+    color='#ffcd70';
+  }else if(risk==='low' && context==='high' && h<60){
+    title='Selective automation allowed';
+    desc='Low risk routing can be automated when confidence and evaluation thresholds are met.';
+    text='The request can be classified and routed automatically. I will preserve the original request, attach the structured summary and log the routing decision for review.';
+    badge='LOW RISK';
+    color='#5df0bd';
+  }else{
+    title='Recommend + human approval';
+    desc='The AI may summarize and recommend next steps, but a person approves the final action.';
+    text='I can summarize the issue and recommend the next checks. I should not change data without confirming the ingestion status and validating the source.';
+    badge='MEDIUM RISK';
+    color='#43d9ff';
+  }
+  document.getElementById('policyTitle').textContent=title;
+  document.getElementById('policyDesc').textContent=desc;
+  document.getElementById('aiBubble').textContent=text;
+  const rb=document.getElementById('riskBadge');rb.textContent=badge;rb.style.color=color;rb.style.borderColor=color+'55';
+  [['g',grounded],['u',useful],['a',allowed],['h',human]].forEach(([id,v])=>{
+    document.getElementById(id+'Bar').style.width=v+'%';document.getElementById(id+'Val').textContent=v;
+  });
+}
+updateSim();
+
+const loopData=[
+  ['Problem','Start with a real user job and measurable pain.'],
+  ['Behavior','Define what the AI may do, may suggest and must never do.'],
+  ['Evaluate','Test normal cases, ambiguity, missing context and failure modes.'],
+  ['Iterate','Turn corrections and failures into the next eval and product change.']
+];
+document.querySelectorAll('.loop-step').forEach((b,i)=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.loop-step').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    const t=document.getElementById('loopTitle'),p=document.getElementById('loopText');
+    t.style.opacity=0;p.style.opacity=0;
+    setTimeout(()=>{t.textContent=loopData[i][0];p.textContent=loopData[i][1];t.style.opacity=1;p.style.opacity=1},120);
+  })
+});
+let loopAuto=0;
+setInterval(()=>{
+  loopAuto=(loopAuto+1)%4;
+  const b=document.querySelectorAll('.loop-step')[loopAuto];
+  if(b)b.click();
+},4200);
+
+
+const roadmapData=[
+  {
+    label:'PHASE 1 / SHADOW MODE',
+    title:'Prove quality before touching the workflow.',
+    desc:'The AI runs quietly in the background. Its outputs are compared with real human decisions so we can build an error taxonomy and baseline quality.',
+    kpis:[['Primary output','Evaluation dataset'],['Go / no-go gate','Stable routing quality'],['Human risk','Zero operational impact']],
+    progress:25
+  },
+  {
+    label:'PHASE 2 / ASSIST MODE',
+    title:'Put recommendations in front of users, not automation.',
+    desc:'Agents see the AI summary, category and suggested route. Every action remains human approved while we measure correction rate and adoption.',
+    kpis:[['Primary output','Agent assist workflow'],['Go / no-go gate','Low correction rate'],['Key metric','Suggestion adoption']],
+    progress:50
+  },
+  {
+    label:'PHASE 3 / SELECTIVE AUTOMATION',
+    title:'Automate only where risk and evidence support it.',
+    desc:'Low risk cases can auto-route when confidence, evaluation quality and policy rules all pass. High impact cases stay behind approval gates.',
+    kpis:[['Primary output','Policy engine'],['Go / no-go gate','Low risk precision'],['Safety control','Approval thresholds']],
+    progress:75
+  },
+  {
+    label:'PHASE 4 / OPTIMIZE',
+    title:'Use real failures as the product feedback loop.',
+    desc:'Corrections, escalations and misses become new evaluation cases. We improve prompts, context retrieval, business rules or model choice based on evidence.',
+    kpis:[['Primary output','Failure feedback loop'],['Optimization','Prompt + context'],['Business metric','Net time saved']],
+    progress:100
+  }
+];
+document.querySelectorAll('.roadmap-btn').forEach((b,i)=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.roadmap-btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    const d=roadmapData[i],box=document.getElementById('roadmapDetail');
+    box.style.animation='none';box.offsetHeight;box.style.animation='roadmapIn .45s ease forwards';
+    document.getElementById('roadmapLabel').textContent=d.label;
+    document.getElementById('roadmapTitle').textContent=d.title;
+    document.getElementById('roadmapDesc').textContent=d.desc;
+    document.getElementById('roadmapKpis').innerHTML=d.kpis.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b></div>`).join('');
+    document.getElementById('roadmapProgress').style.width=d.progress+'%';
+  })
+});
+
+
+const expData={
+  moe:{
+    eyebrow:'PRODUCT + QUALITY + SCALE',
+    title:'National education web system',
+    summary:'Owned a national data intake system and connected user needs, external vendors, requirements, implementation, QA and data quality.',
+    core:'1M+',coreLabel:'records monitored',
+    proof:[
+      ['Scale','250+ vendors','External technology interfaces'],
+      ['Quality','Manual QA','Error investigation and validation'],
+      ['Product','Requirements','User and vendor needs to specs'],
+      ['Delivery','Go-live','Implementation and issue follow-up']
+    ],
+    heat:[['Product ownership',92],['Stakeholder complexity',96],['Data quality',91],['QA and validation',88],['AI transferability',90]],
+    systems:['Jira','Monday','CRM','IDM','Excel','AI tools','Prompt writing','Web systems']
+  },
+  globale:{
+    eyebrow:'ANALYSIS + RULES + DATA ACCURACY',
+    title:'Global e-commerce restrictions analysis',
+    summary:'Worked with structured operational cases, data accuracy, internal rules and basic SQL in a global e-commerce environment.',
+    core:'SQL',coreLabel:'data review + inconsistency checks',
+    proof:[
+      ['Analysis','Case review','Operational restrictions and exceptions'],
+      ['Data','Accuracy','Inconsistency detection'],
+      ['Technical','Basic SQL','Data checks in internal systems'],
+      ['Process','Rules','Structured decision environment']
+    ],
+    heat:[['Analytical review',94],['Rule interpretation',90],['Data accuracy',92],['Technical depth',70],['AI transferability',84]],
+    systems:['Basic SQL','Internal systems','E-commerce data','Operational rules','Documentation']
+  },
+  courts:{
+    eyebrow:'CONTROL + PERMISSIONS + SENSITIVE SYSTEMS',
+    title:'National court system operations',
+    summary:'Manage user lifecycle and permissions inside a sensitive governmental digital environment where accuracy, process control and auditability matter.',
+    core:'5K+',coreLabel:'user lifecycle environment',
+    proof:[
+      ['Control','Permissions','Access lifecycle and accuracy'],
+      ['Risk','Sensitive system','Strict process environment'],
+      ['Operations','Issue routing','Structured follow-up'],
+      ['Quality','Documentation','Reliable operational control']
+    ],
+    heat:[['Operational control',95],['Accuracy',96],['Risk awareness',92],['Documentation',90],['AI transferability',82]],
+    systems:['Net HaMishpat','Permissions','User lifecycle','Internal procedures','Issue routing']
+  }
+};
+function renderExp(key){
+  const d=expData[key];
+  document.getElementById('expEyebrow').textContent=d.eyebrow;
+  document.getElementById('expTitle').textContent=d.title;
+  document.getElementById('expSummary').textContent=d.summary;
+  document.getElementById('expCore').textContent=d.core;
+  document.getElementById('expCoreLabel').textContent=d.coreLabel;
+  document.getElementById('proofGrid').innerHTML=d.proof.map(x=>`<div class="proof"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
+  document.getElementById('heatmap').innerHTML=d.heat.map(x=>`<div class="heat-row"><span>${x[0]}</span><div class="track"><i style="width:${x[1]}%"></i></div><b>${x[1]}</b></div>`).join('');
+  document.getElementById('systemCloud').innerHTML=d.systems.map((x,i)=>`<span class="system-chip" style="animation-delay:${i*.04}s">${x}</span>`).join('');
+}
+document.querySelectorAll('.exp-role-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.exp-role-btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    renderExp(b.dataset.role);
+  })
+});
+renderExp('moe');
+
+
+const contactModal=document.getElementById('contactModal');
+const contactBackdrop=document.getElementById('contactBackdrop');
+const contactClose=document.getElementById('contactClose');
+const openContactHero=document.getElementById('openContactHero');
+const openContactFooter=document.getElementById('openContactFooter');
+const copyEmailModal=document.getElementById('copyEmailModal');
+const copyEmailFooter=document.getElementById('copyEmailFooter');
+const EMAIL='idanwess8@gmail.com';
+
+function openContact(){
+  contactModal.classList.add('open');
+  contactModal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+}
+function closeContact(){
+  contactModal.classList.remove('open');
+  contactModal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+openContactHero?.addEventListener('click',openContact);
+openContactFooter?.addEventListener('click',openContact);
+contactBackdrop?.addEventListener('click',closeContact);
+contactClose?.addEventListener('click',closeContact);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContact()});
+
+async function copyEmail(statusEl){
+  let ok=false;
+  try{
+    await navigator.clipboard.writeText(EMAIL);
+    ok=true;
+  }catch(e){
+    const ta=document.createElement('textarea');
+    ta.value=EMAIL;
+    ta.style.position='fixed';
+    ta.style.opacity='0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ok=document.execCommand('copy')}catch(err){}
+    ta.remove();
+  }
+  statusEl.textContent=ok?'Email copied: '+EMAIL:'Copy failed. Email: '+EMAIL;
+  setTimeout(()=>statusEl.textContent='',3200);
+}
+copyEmailModal?.addEventListener('click',()=>copyEmail(document.getElementById('copyModalStatus')));
+copyEmailFooter?.addEventListener('click',()=>copyEmail(document.getElementById('copyFooterStatus')));
+
+</script>
+</body>
+</html>
