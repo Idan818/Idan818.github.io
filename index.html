@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Idan Weiss - AI Product Manager portfolio">
-<title>Idan Weiss | AI Product</title>
+<title>Idan Weiss | Product Manager - AI Product Thinking</title>
 <style>
 :root{
   --bg:#05070c;
@@ -21,7 +21,7 @@
   --max:1240px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   margin:0;
   background:
@@ -187,7 +187,7 @@ h1{
 .marquee span{padding:10px 18px;font-size:11px;color:#aeb8ca;border-right:1px solid var(--line)}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
-section{padding:92px 0;position:relative;z-index:2}
+section{padding:92px 0;position:relative;z-index:2;scroll-margin-top:82px}
 .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#95efd4;font-weight:900;margin-bottom:9px}
 .head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:32px}
 .head h2{font-size:clamp(34px,4.4vw,54px);letter-spacing:-.045em;line-height:1.02;margin:0;max-width:700px}
@@ -200,7 +200,7 @@ section{padding:92px 0;position:relative;z-index:2}
 .bento{
   display:grid;
   grid-template-columns:1.12fr .88fr .88fr;
-  grid-template-rows:270px 250px;
+  grid-template-rows:300px 290px;
   gap:16px;
 }
 .bento .card{padding:23px;position:relative}
@@ -337,8 +337,8 @@ footer{padding:50px 0 70px;border-top:1px solid var(--line);position:relative;z-
   .head{display:block}.head p{margin-top:12px}.foot{display:block}.arch{width:100%;max-width:430px;height:auto;transform:none;margin-bottom:0}.arch-node{font-size:8.5px;padding:8px 3px}.arch-node span{font-size:7px}
 }
 
-.loop-card{min-height:250px}
-.loop-viz{position:relative;height:185px;margin-top:8px}
+.loop-card{min-height:290px}
+.loop-viz{position:relative;height:215px;margin-top:8px}
 .loop-ring{
   position:absolute;width:146px;height:146px;border-radius:50%;left:50%;top:50%;
   transform:translate(-50%,-50%);
@@ -792,6 +792,44 @@ footer{
 }
 .copy-status{color:#18765d}
 
+
+/* AI product credibility upgrade */
+.truth-badge{display:inline-flex;align-items:center;margin-left:8px;padding:4px 7px;border-radius:999px;font-size:8px;font-weight:900;letter-spacing:.08em;vertical-align:middle}
+.truth-badge.concept{color:#5b44b4;background:rgba(116,85,233,.08);border:1px solid rgba(116,85,233,.18)}
+.truth-badge.real{color:#126b52;background:rgba(24,138,104,.08);border:1px solid rgba(24,138,104,.18)}
+
+.release-card{display:flex;flex-direction:column;min-height:100%}
+.release-gates{display:grid;gap:10px;margin-top:26px}
+.gate-row{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid rgba(40,58,86,.10)}
+.gate-row:first-child{border-top:0}
+.gate-check{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(116,85,233,.08);color:#6149c7;font-size:10px;font-weight:900}
+.gate-row b{display:block;font-size:12px;color:#223149}.gate-row small{display:block;margin-top:2px;font-size:9px;color:#748198}
+.gate-row em{font-style:normal;font-size:8px;font-weight:900;letter-spacing:.09em;color:#18765d;background:rgba(24,138,104,.07);border:1px solid rgba(24,138,104,.14);padding:5px 7px;border-radius:999px}
+.release-note{margin-top:auto;padding-top:20px;color:#65748b;font-size:10px;line-height:1.55}
+.policy-card{display:flex;flex-direction:column}
+.policy-orb{width:124px;height:124px;border-radius:50%;margin:24px auto 18px;display:grid;place-content:center;text-align:center;background:radial-gradient(circle at 35% 25%,#fff,#eef4fb 62%,#e4ebf5);border:1px solid rgba(40,58,86,.11);box-shadow:0 15px 35px rgba(39,58,88,.08)}
+.policy-orb b{font-size:18px;color:#18263d}.policy-orb span{font-size:8px;color:#718097;margin-top:3px}
+.policy-rule{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid rgba(40,58,86,.10);font-size:9px}.policy-rule span{color:#68778d}.policy-rule b{color:#24334b;text-align:right}
+.risk-list{display:grid;gap:10px;margin-top:22px}.risk-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid rgba(40,58,86,.09);font-size:10px;color:#304057}.risk-row:first-child{border-top:0}
+.risk-pill{font-size:8px;padding:5px 7px;border-radius:999px;letter-spacing:.07em}.risk-pill.critical{color:#a33d4b;background:rgba(195,72,88,.08);border:1px solid rgba(195,72,88,.17)}.risk-pill.high{color:#95630d;background:rgba(168,110,8,.08);border:1px solid rgba(168,110,8,.16)}
+
+.judgment-shell{display:grid;gap:16px}
+.judgment-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.decision-card{appearance:none;text-align:left;border:1px solid rgba(40,58,86,.13);background:rgba(255,255,255,.76);border-radius:14px;padding:15px;cursor:pointer;min-height:116px;transition:.22s ease;box-shadow:0 10px 26px rgba(39,58,88,.045)}
+.decision-card:hover,.decision-card.on{transform:translateY(-3px);border-color:rgba(116,85,233,.28);background:linear-gradient(180deg,rgba(116,85,233,.065),rgba(255,255,255,.96));box-shadow:0 15px 35px rgba(56,66,110,.08)}
+.decision-card span{display:block;color:#18765d;font-size:9px;font-weight:900;letter-spacing:.08em}.decision-card b{display:block;margin:12px 0 4px;color:#1e2d44;font-size:13px}.decision-card small{display:block;color:#728097;font-size:9px;line-height:1.35}
+.decision-detail{padding:24px;display:grid;grid-template-columns:1.35fr .9fr;gap:22px;align-items:center;min-height:230px;overflow:hidden;position:relative}
+.decision-detail:before{content:"";position:absolute;inset:auto -90px -120px auto;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(116,85,233,.08),transparent 65%);pointer-events:none}
+.decision-detail h3{font-size:28px;letter-spacing:-.035em;margin:9px 0 10px;color:#17253b}.decision-detail p{font-size:12px;color:#5f6f87;line-height:1.65;max-width:720px}
+.decision-proof{display:grid;gap:9px;position:relative;z-index:1}.decision-proof div{padding:12px 13px;border:1px solid rgba(40,58,86,.11);border-radius:11px;background:#f8faff}.decision-proof span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:#7c899d}.decision-proof b{display:block;margin-top:4px;color:#23324a;font-size:11px}.decision-detail.flash{animation:decisionFlash .35s ease}@keyframes decisionFlash{from{opacity:.72;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.evidence-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start;padding:8px 0;border-top:1px solid rgba(40,58,86,.09);font-size:10px}.evidence-row:first-child{border-top:0}.evidence-row span{color:#65748a;font-weight:800}.evidence-row b{color:#26364d;font-weight:650;line-height:1.4}
+.source-link{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+
+@media(max-width:1180px){.judgment-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.judgment-grid{grid-template-columns:repeat(2,1fr)}.decision-detail{grid-template-columns:1fr}.decision-detail h3{font-size:24px}.gate-row{grid-template-columns:30px 1fr}.gate-row em{grid-column:2;justify-self:start}.evidence-row{grid-template-columns:1fr}.truth-badge{margin-left:0;margin-top:6px}}
+@media(max-width:480px){.hero-visual,.orbit-wrap{overflow:hidden}.judgment-grid{grid-template-columns:1fr}.decision-card{min-height:auto}.decision-proof{grid-template-columns:1fr}.policy-rule{flex-direction:column}.policy-rule b{text-align:left}}
+
 </style>
 </head>
 <body>
@@ -803,6 +841,7 @@ footer{
     <div class="brand">IDAN WEISS <span class="slash">/ AI PRODUCT</span></div>
     <div class="navlinks">
       <a href="#dashboard">Signal</a>
+      <a href="#judgment">Judgment</a>
       <a href="#case">Case study</a>
       <a href="#simulator">Simulator</a>
       <a href="#roadmap">Roadmap</a>
@@ -816,9 +855,9 @@ footer{
 <canvas id="net"></canvas>
 <div class="wrap hero-grid">
   <div>
-    <div class="kicker"><b></b> Product Manager with AI product depth</div>
+    <div class="kicker"><b></b> Product Manager / AI Product Thinking</div>
     <h1>I design how AI <span class="shine">behaves inside a product.</span></h1>
-    <p>My strength is the connection between product thinking, real operational workflows, data quality, QA and AI. I do not treat AI as a magic box. I define the problem, the context, the failure modes, the evaluation method and the human handoff.</p>
+    <p>I treat AI as a product system, not a magic box: define the user job, ground outputs in trusted context, constrain the output contract, evaluate failure modes, apply deterministic policy gates and keep a human fallback where risk requires it. My real-world foundation is product ownership, data quality, QA and complex operational workflows.</p>
     <div class="actions">
       <a class="btn primary" href="#case">Open the case study</a>
       <a class="btn" href="#simulator">Run the AI simulator</a>
@@ -833,9 +872,9 @@ footer{
       <div class="orbit o3"></div>
 
       <div class="node n1 tilt"><div>USER NEED<small>Problem signal</small></div></div>
-      <div class="node n2 tilt"><div>CONTEXT<small>Trusted data</small></div></div>
+      <div class="node n2 tilt"><div>GROUNDING<small>Trusted context</small></div></div>
       <div class="node n3 tilt"><div>EVALUATION<small>Evals + edge cases</small></div></div>
-      <div class="node n4 tilt"><div>HUMAN LOOP<small>Approval + fallback</small></div></div>
+      <div class="node n4 tilt"><div>GUARDRAILS<small>Policy + fallback</small></div></div>
 
       <div class="core"><div><strong>AI PRODUCT</strong><span>Behavior, quality, value</span></div></div>
       <div class="orbit-particle op1"></div>
@@ -852,8 +891,8 @@ footer{
 
 <div class="hero-strip">
   <div class="marquee">
-    <span>Product discovery</span><span>Prompt design</span><span>Evaluation</span><span>Hallucination control</span><span>Human in the loop</span><span>Data quality</span><span>Manual QA</span><span>Requirements</span><span>Metrics</span>
-    <span>Product discovery</span><span>Prompt design</span><span>Evaluation</span><span>Hallucination control</span><span>Human in the loop</span><span>Data quality</span><span>Manual QA</span><span>Requirements</span><span>Metrics</span>
+    <span>Product discovery</span><span>Grounding / retrieval</span><span>Structured outputs</span><span>Evaluation</span><span>Guardrails</span><span>Human in the loop</span><span>Observability</span><span>Latency + cost</span><span>Data quality</span>
+    <span>Product discovery</span><span>Grounding / retrieval</span><span>Structured outputs</span><span>Evaluation</span><span>Guardrails</span><span>Human in the loop</span><span>Observability</span><span>Latency + cost</span><span>Data quality</span>
   </div>
 </div>
 </header>
@@ -861,56 +900,45 @@ footer{
 <section id="dashboard" class="reveal">
 <div class="wrap">
   <div class="head">
-    <div><div class="eyebrow">Product signal dashboard</div><h2>Not a list of buzzwords. A working model of how I think.</h2></div>
-    <p>This section visualizes the parts I care about when I evaluate an AI product: product value, model behavior, quality, risk and operational fit.</p>
+    <div><div class="eyebrow">Product signal dashboard</div><h2>AI quality is a release decision, not a vanity score.</h2></div>
+    <p>I would not trust one composite number. I would define separate release gates for usefulness, grounding, safety, operational fit and business value - then test them on real cases.</p>
   </div>
 
   <div class="bento">
-    <div class="card large tilt">
-      <div class="card-title">AI Product Quality Index</div>
-      <div class="card-sub">Composite score used in this portfolio demo</div>
-      <div class="big-number"><span class="count" data-to="87">0</span><small>/100</small></div>
-      <div class="mini-list">
-        <div class="mini-row"><span>Task success</span><div class="bar"><i style="width:91%"></i></div><b>91</b></div>
-        <div class="mini-row"><span>Groundedness</span><div class="bar"><i style="width:88%"></i></div><b>88</b></div>
-        <div class="mini-row"><span>Human control</span><div class="bar"><i style="width:95%"></i></div><b>95</b></div>
-        <div class="mini-row"><span>Latency fit</span><div class="bar"><i style="width:76%"></i></div><b>76</b></div>
+    <div class="card large tilt release-card">
+      <div class="card-title">Release Readiness Gates</div>
+      <div class="card-sub">Framework for the portfolio concept - not claimed production results</div>
+      <div class="release-gates">
+        <div class="gate-row"><span class="gate-check">01</span><div><b>Task success</b><small>Does the output help complete the user job?</small></div><em>MEASURE</em></div>
+        <div class="gate-row"><span class="gate-check">02</span><div><b>Grounding</b><small>Are factual claims supported by trusted evidence?</small></div><em>MEASURE</em></div>
+        <div class="gate-row"><span class="gate-check">03</span><div><b>Human control</b><small>Do risky or ambiguous cases stop at the right gate?</small></div><em>POLICY</em></div>
+        <div class="gate-row"><span class="gate-check">04</span><div><b>Latency + cost</b><small>Is the quality worth the response time and unit economics?</small></div><em>BUDGET</em></div>
       </div>
-      <div class="spark">
-        <svg viewBox="0 0 500 100" preserveAspectRatio="none">
-          <defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#5df0bd"/></linearGradient></defs>
-          <path class="line-draw" d="M0 78 C45 70 60 25 110 48 S180 85 220 45 S300 34 340 54 S410 29 500 15" fill="none" stroke="url(#sg)" stroke-width="4"/>
-        </svg>
-      </div>
+      <div class="release-note">Ship only when every critical gate has an owner, metric, threshold and regression test.</div>
     </div>
 
-    <div class="card tilt">
-      <div class="card-title">Human Review Coverage</div>
-      <div class="card-sub">High impact actions stay gated</div>
-      <div class="donut">
-        <svg viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="48" fill="none" stroke="#172033" stroke-width="10"/>
-          <circle cx="60" cy="60" r="48" fill="none" stroke="#5df0bd" stroke-linecap="round" stroke-width="10" stroke-dasharray="301.6" stroke-dashoffset="45"/>
-        </svg>
-        <div class="value"><div><b>85%</b><span>approval coverage</span></div></div>
-      </div>
-      <div class="ticker">policy: sensitive action -> review</div>
+    <div class="card tilt policy-card">
+      <div class="card-title">Human Control Policy</div>
+      <div class="card-sub">Autonomy follows risk, not excitement</div>
+      <div class="policy-orb"><b>REVIEW</b><span>high-impact actions</span></div>
+      <div class="policy-rule"><span>Low risk + enough evidence</span><b>may auto-route</b></div>
+      <div class="policy-rule"><span>High impact / missing evidence</span><b>human approval</b></div>
     </div>
 
-    <div class="card tilt">
+    <div class="card tilt risk-card">
       <div class="card-title">Failure Taxonomy</div>
-      <div class="card-sub">What I want the product to detect</div>
-      <div class="mini-list">
-        <div class="mini-row"><span>Hallucination</span><div class="bar"><i style="width:82%"></i></div><b>82</b></div>
-        <div class="mini-row"><span>Wrong routing</span><div class="bar"><i style="width:64%"></i></div><b>64</b></div>
-        <div class="mini-row"><span>Missing context</span><div class="bar"><i style="width:75%"></i></div><b>75</b></div>
-        <div class="mini-row"><span>Over automation</span><div class="bar"><i style="width:58%"></i></div><b>58</b></div>
+      <div class="card-sub">Prioritize failure types before optimizing averages</div>
+      <div class="risk-list">
+        <div class="risk-row"><span>Unsupported factual claim</span><b class="risk-pill critical">CRITICAL</b></div>
+        <div class="risk-row"><span>Wrong routing</span><b class="risk-pill high">HIGH</b></div>
+        <div class="risk-row"><span>Missing context ignored</span><b class="risk-pill high">HIGH</b></div>
+        <div class="risk-row"><span>Over-automation</span><b class="risk-pill critical">CRITICAL</b></div>
       </div>
     </div>
 
     <div class="card tilt">
       <div class="card-title">Live Eval Feed</div>
-      <div class="card-sub">Simulated product events</div>
+      <div class="card-sub">Simulated product events - illustrative only</div>
       <div class="live-log" id="liveLog"></div>
     </div>
 
@@ -931,11 +959,44 @@ footer{
 </div>
 </section>
 
+<section id="judgment" class="reveal">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">AI product judgment</div><h2>The model is one component. The product is the control system around it.</h2></div>
+    <p>These are the decisions I would expect an AI Product Manager to make before choosing a model, writing a prompt or asking engineering to automate anything.</p>
+  </div>
+
+  <div class="judgment-shell">
+    <div class="judgment-grid">
+      <button class="decision-card on" data-decision="0"><span>01</span><b>Why AI?</b><small>Problem fit before model fit</small></button>
+      <button class="decision-card" data-decision="1"><span>02</span><b>Grounding</b><small>Trusted evidence before claims</small></button>
+      <button class="decision-card" data-decision="2"><span>03</span><b>Output contract</b><small>Schema before automation</small></button>
+      <button class="decision-card" data-decision="3"><span>04</span><b>Model choice</b><small>Quality vs latency vs cost</small></button>
+      <button class="decision-card" data-decision="4"><span>05</span><b>Guardrails</b><small>Rules outside the model</small></button>
+      <button class="decision-card" data-decision="5"><span>06</span><b>Observability</b><small>Version, trace, learn</small></button>
+    </div>
+
+    <div class="card decision-detail" id="decisionDetail">
+      <div>
+        <div class="eyebrow" id="decisionLabel">01 / PROBLEM FIT</div>
+        <h3 id="decisionTitle">Use AI where language variability creates real work.</h3>
+        <p id="decisionDesc">For supplier support, an LLM can help classify, summarize and identify missing information. It should not become the source of truth for system status, permissions or business rules.</p>
+      </div>
+      <div class="decision-proof">
+        <div><span>Use AI for</span><b id="decisionUse">Unstructured language</b></div>
+        <div><span>Keep deterministic</span><b id="decisionKeep">Permissions + business rules</b></div>
+        <div><span>Failure to avoid</span><b id="decisionFail">Automating the wrong problem</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <section id="case" class="reveal">
 <div class="wrap">
   <div class="head">
-    <div><div class="eyebrow">Deep case study</div><h2>Supplier Support Copilot</h2></div>
-    <p>A portfolio concept built from a problem I understand well: large volumes of supplier requests, inconsistent information, routing delays and repeated manual investigation.</p>
+    <div><div class="eyebrow">Deep case study <span class="truth-badge concept">PORTFOLIO CONCEPT</span></div><h2>Supplier Support Copilot</h2></div>
+    <p>A concept built around a workflow I know from real operations. The AI design below is a product exercise - not a claim that this system was deployed in production.</p>
   </div>
 
   <div class="case-shell">
@@ -954,15 +1015,15 @@ footer{
           <h3 id="caseTitle">Too much time is spent understanding the request before solving it.</h3>
           <p id="caseDesc">The product opportunity is not to replace support. It is to reduce the manual work around intake, classification, context gathering and first response preparation.</p>
           <div class="case-tags" id="caseTags">
-            <span class="tag">Support operations</span><span class="tag">LLM classification</span><span class="tag">Human approval</span><span class="tag">Structured output</span>
+            <span class="tag">Support operations</span><span class="tag">LLM triage</span><span class="tag">Evidence gating</span><span class="tag">Human approval</span>
           </div>
         </div>
 
         <div class="arch">
-          <div class="arch-node a1"><b>Incoming request</b><span>Email / CRM</span></div>
-          <div class="arch-node a2"><b>AI triage</b><span>Intent + summary</span></div>
-          <div class="arch-node a3"><b>Context check</b><span>Known vs missing</span></div>
-          <div class="arch-node a4"><b>Human agent</b><span>Approve / edit / send</span></div>
+          <div class="arch-node a1"><b>Incoming request</b><span>Email + CRM</span></div>
+          <div class="arch-node a2"><b>LLM triage</b><span>Structured JSON</span></div>
+          <div class="arch-node a3"><b>Evidence gate</b><span>Trusted vs missing</span></div>
+          <div class="arch-node a4"><b>Policy + human</b><span>Approve / edit / send</span></div>
           <svg class="arch-svg" viewBox="0 0 430 165" preserveAspectRatio="none" aria-hidden="true">
             <path id="pathTop" d="M104 82 C126 74 134 34 145 34 C235 34 274 76 326 76" fill="none" stroke="rgba(67,217,255,.38)" stroke-width="2"/>
             <path id="pathBottom" d="M104 86 C126 96 134 120 145 120 C235 120 274 78 326 78" fill="none" stroke="rgba(93,240,189,.34)" stroke-width="2"/>
@@ -999,7 +1060,7 @@ footer{
 <div class="wrap">
   <div class="head">
     <div><div class="eyebrow">Interactive AI product simulator</div><h2>Change the product conditions and watch the behavior change.</h2></div>
-    <p>This is a front end simulation. It demonstrates decision logic: context quality, task sensitivity and human review should affect what the AI is allowed to do.</p>
+    <p>This is a front end policy simulation, not a live model. It shows how evidence quality, task sensitivity and review policy should change what the product is allowed to automate.</p>
   </div>
 
   <div class="sim">
@@ -1043,7 +1104,7 @@ footer{
         <div class="bubble ai" id="aiBubble">I can summarize the issue and recommend the next checks. I should not change data without confirming the ingestion status and validating the source.</div>
       </div>
       <div class="eval-panel">
-        <div class="eval-row"><span>Groundedness</span><div class="bar"><i id="gBar" style="width:88%"></i></div><b id="gVal">88</b></div>
+        <div class="eval-row"><span>Evidence coverage</span><div class="bar"><i id="gBar" style="width:88%"></i></div><b id="gVal">88</b></div>
         <div class="eval-row"><span>Usefulness</span><div class="bar"><i id="uBar" style="width:91%"></i></div><b id="uVal">91</b></div>
         <div class="eval-row"><span>Automation allowed</span><div class="bar"><i id="aBar" style="width:42%"></i></div><b id="aVal">42</b></div>
         <div class="eval-row"><span>Human review need</span><div class="bar"><i id="hBar" style="width:72%"></i></div><b id="hVal">72</b></div>
@@ -1063,8 +1124,8 @@ footer{
   <div class="roadmap">
     <button class="phase roadmap-btn on" data-phase="0"><div class="inner"><div class="label">Phase 1</div><h4>Shadow mode</h4><p>AI observes and scores without affecting operations.</p></div></button>
     <button class="phase roadmap-btn" data-phase="1"><div class="inner"><div class="label">Phase 2</div><h4>Assist mode</h4><p>AI recommends. Humans approve every action.</p></div></button>
-    <button class="phase roadmap-btn" data-phase="2"><div class="inner"><div class="label">Phase 3</div><h4>Selective automation</h4><p>Only low risk cases can auto-route.</p></div></button>
-    <button class="phase roadmap-btn" data-phase="3"><div class="inner"><div class="label">Phase 4</div><h4>Optimize</h4><p>Failures become training and eval inputs.</p></div></button>
+    <button class="phase roadmap-btn" data-phase="2"><div class="inner"><div class="label">Phase 3</div><h4>Selective automation</h4><p>Only low-risk cases that pass evidence and policy gates can auto-route.</p></div></button>
+    <button class="phase roadmap-btn" data-phase="3"><div class="inner"><div class="label">Phase 4</div><h4>Optimize</h4><p>Failures become eval, prompt, retrieval and product inputs.</p></div></button>
   </div>
 
   <div class="roadmap-detail card" id="roadmapDetail">
@@ -1089,7 +1150,7 @@ footer{
 <section id="experience" class="reveal">
 <div class="wrap">
   <div class="head">
-    <div><div class="eyebrow">Real world foundation</div><h2>My background is a system of evidence, not a paragraph.</h2></div>
+    <div><div class="eyebrow">Real world foundation <span class="truth-badge real">REAL EXPERIENCE</span></div><h2>My background is a system of evidence, not a paragraph.</h2></div>
     <p class="choose-role-hint">Choose a role.</p>
   </div>
 
@@ -1129,7 +1190,7 @@ footer{
 
       <div class="exp-bottom">
         <div>
-          <div class="card-title">Capability heatmap</div>
+          <div class="card-title">Transferable evidence</div>
           <div class="heatmap" id="heatmap"></div>
         </div>
         <div>
@@ -1172,6 +1233,7 @@ footer{
   <div class="footer-contact-actions">
     <button class="mini-contact-btn" id="openContactFooter" type="button">Contact</button>
     <button class="mini-contact-btn" id="copyEmailFooter" type="button">Copy email</button>
+    <a class="mini-contact-btn source-link" href="https://github.com/Idan818/Idan818.github.io" target="_blank" rel="noopener">View source</a>
   </div>
   <span id="copyFooterStatus" class="copy-status"></span>
 </div>
@@ -1243,9 +1305,9 @@ const logs=[
 '[PASS] summary preserved known facts',
 '[FLAG] root cause unsupported by context',
 '[PASS] sensitive action requires approval',
-'[PASS] routing confidence 0.91',
+'[PASS] routing passed policy gate',
 '[FLAG] missing supplier identifier',
-'[PASS] no personal data exposed'
+'[PASS] sensitive action remained gated'
 ];
 let li=0;
 setInterval(()=>{
@@ -1257,12 +1319,66 @@ setInterval(()=>{
   box.scrollTop=box.scrollHeight;
 },1100);
 
+
+const decisionData=[
+  {
+    label:'01 / PROBLEM FIT',
+    title:'Use AI where language variability creates real work.',
+    desc:'For supplier support, an LLM can help classify, summarize and identify missing information. It should not become the source of truth for system status, permissions or business rules.',
+    use:'Unstructured language', keep:'Permissions + business rules', fail:'Automating the wrong problem'
+  },
+  {
+    label:'02 / GROUNDING',
+    title:'A useful answer is not enough. It needs evidence.',
+    desc:'Factual product behavior should be grounded in trusted, permitted context. Retrieval can supply relevant records, but missing evidence should remain visible instead of being guessed away.',
+    use:'Relevant trusted context', keep:'Evidence permissions', fail:'Plausible unsupported claims'
+  },
+  {
+    label:'03 / OUTPUT CONTRACT',
+    title:'Free text is for people. Automation needs a contract.',
+    desc:'Before downstream logic uses an LLM output, I would request structured fields, validate them against a schema and reject or route malformed outputs instead of trying to interpret them silently.',
+    use:'Schema-constrained JSON', keep:'Validation + fallbacks', fail:'Brittle downstream automation'
+  },
+  {
+    label:'04 / MODEL CHOICE',
+    title:'Choose the smallest model that clears the product gate.',
+    desc:'I would compare candidate models on the same evaluation set and decision criteria. Better benchmark scores do not justify worse latency or cost if the smaller model already meets the required quality.',
+    use:'Eval-driven comparison', keep:'Latency + cost budget', fail:'Paying for unused intelligence'
+  },
+  {
+    label:'05 / GUARDRAILS',
+    title:'The model proposes. The product decides what is allowed.',
+    desc:'Permissions, sensitive actions, approval rules and irreversible changes should be controlled by deterministic product logic. Human review is a policy decision, not a prompt instruction.',
+    use:'Risk-based autonomy', keep:'Rules outside model', fail:'Prompt-only safety'
+  },
+  {
+    label:'06 / OBSERVABILITY',
+    title:'Every production change should be traceable.',
+    desc:'To learn from failures, I would log the model and prompt version, retrieved context, structured output, policy result, latency, cost and human correction. That creates the regression loop for the next release.',
+    use:'Trace + feedback loop', keep:'Versioned evals', fail:'Unexplained quality drift'
+  }
+];
+document.querySelectorAll('.decision-card').forEach((btn,i)=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.decision-card').forEach(x=>x.classList.remove('on'));
+    btn.classList.add('on');
+    const d=decisionData[i], box=document.getElementById('decisionDetail');
+    box.classList.remove('flash'); void box.offsetWidth; box.classList.add('flash');
+    document.getElementById('decisionLabel').textContent=d.label;
+    document.getElementById('decisionTitle').textContent=d.title;
+    document.getElementById('decisionDesc').textContent=d.desc;
+    document.getElementById('decisionUse').textContent=d.use;
+    document.getElementById('decisionKeep').textContent=d.keep;
+    document.getElementById('decisionFail').textContent=d.fail;
+  });
+});
+
 const caseData={
   problem:{
     label:'01 Problem',
     title:'Too much time is spent understanding the request before solving it.',
     desc:'The product opportunity is not to replace support. It is to reduce the manual work around intake, classification, context gathering and first response preparation.',
-    tags:['Support operations','LLM classification','Human approval','Structured output'],
+    tags:['Support operations','LLM triage','Evidence gating','Human approval'],
     cards:[
       ['Signal','Repeated triage work','Agents repeatedly read, classify and summarize similar requests before they can start solving them.'],
       ['Risk','False certainty','The AI must never invent system status or root cause when the relevant evidence is missing.'],
@@ -1283,34 +1399,34 @@ const caseData={
   architecture:{
     label:'03 Architecture',
     title:'The model should sit inside a controlled workflow, not outside it.',
-    desc:'The AI receives the request and trusted context, returns structured fields, then the product applies deterministic business rules before anything reaches the human agent.',
-    tags:['Trusted context','Structured output','Business rules','Audit trail'],
+    desc:'The product retrieves only permitted context, asks the model for schema-constrained output, validates the response, then applies deterministic policy and permission rules before any action is proposed.',
+    tags:['Retrieval / context','Structured output','Policy engine','Audit trail'],
     cards:[
-      ['Input','Request + metadata','Email or CRM content, supplier identifier, known account context and previous case history if allowed.'],
-      ['Model output','JSON structure','Intent, short summary, missing context, suggested routing, risk flags and draft response.'],
-      ['Product layer','Rules + audit','Confidence thresholds, approval requirements, audit log and deterministic routing rules.']
+      ['Grounding','Trusted context','Retrieve only relevant, permitted records. If evidence is missing, the product should expose the gap instead of filling it in.'],
+      ['Output contract','Schema-validated JSON','Intent, summary, missing context, suggested route, risk flags and draft response should be machine-checkable.'],
+      ['Policy layer','Rules + permissions','Approval gates, permissions, routing rules and audit logging remain deterministic and outside the model.']
     ]
   },
   evaluation:{
     label:'04 Evaluation',
     title:'I would build the evaluation set before trusting the feature.',
-    desc:'The dataset should include normal cases, ambiguous requests, missing context, contradictory information, sensitive actions and adversarial wording.',
-    tags:['Eval set','Error taxonomy','Edge cases','Offline testing'],
+    desc:'I would create a labeled golden set before rollout, then add ambiguous requests, missing context, contradictory evidence, sensitive actions and real human corrections as regression cases.',
+    tags:['Golden set','Error taxonomy','Regression evals','Release gates'],
     cards:[
-      ['Accuracy','Intent + routing','Did the model classify the case correctly and recommend the correct queue?'],
-      ['Groundedness','No invented facts','Did every specific claim come from the request or trusted context?'],
-      ['Safety','Correct handoff','Did high impact or uncertain cases move to human review instead of being automated?']
+      ['Task quality','Intent + routing','Measure task success by labeled intent and routing outcomes, not by whether the answer sounds good.'],
+      ['Grounding','Unsupported claim rate','Check whether factual claims are supported by retrieved evidence and track unsupported claims separately.'],
+      ['Regression','Versioned eval suite','Re-run the same critical cases after prompt, retrieval or model changes before release.']
     ]
   },
   metrics:{
     label:'05 Metrics',
     title:'A good model score is not enough. The product has to save real work.',
     desc:'I would combine offline AI quality metrics with operational outcomes. The goal is not maximum automation. The goal is faster, more consistent handling without hidden correction cost.',
-    tags:['Task success','Handling time','Correction rate','Adoption'],
+    tags:['Net time saved','Override rate','Unsupported claims','Latency + cost'],
     cards:[
-      ['Product metric','Handling time','How much time is saved per case after accounting for review and corrections?'],
-      ['Quality metric','Correction rate','How often does the agent need to change the summary, route or recommended next step?'],
-      ['Trust metric','Suggestion adoption','How often do agents accept suggestions, and where do they systematically ignore them?']
+      ['Business metric','Net handling time','Measure time saved only after human review and correction cost are included.'],
+      ['Quality metric','Override + unsupported claim rate','Track where agents correct the AI and whether any factual claim lacked evidence.'],
+      ['Operational metric','p95 latency + cost per case','Choose a model and workflow that clear quality gates without breaking response time or unit economics.']
     ]
   }
 };
@@ -1362,8 +1478,8 @@ function updateSim(){
     color='#ffcd70';
   }else if(risk==='low' && context==='high' && h<60){
     title='Selective automation allowed';
-    desc='Low risk routing can be automated when confidence and evaluation thresholds are met.';
-    text='The request can be classified and routed automatically. I will preserve the original request, attach the structured summary and log the routing decision for review.';
+    desc='Low-risk routing can be automated only when evidence sufficiency, eval quality and deterministic policy gates all pass.';
+    text='The request can be classified and routed automatically because this path is low risk and the required evidence is present. The product preserves the source request, validates the structured output and logs the routing decision.';
     badge='LOW RISK';
     color='#5df0bd';
   }else{
@@ -1423,15 +1539,15 @@ const roadmapData=[
   {
     label:'PHASE 3 / SELECTIVE AUTOMATION',
     title:'Automate only where risk and evidence support it.',
-    desc:'Low risk cases can auto-route when confidence, evaluation quality and policy rules all pass. High impact cases stay behind approval gates.',
-    kpis:[['Primary output','Policy engine'],['Go / no-go gate','Low risk precision'],['Safety control','Approval thresholds']],
+    desc:'Low-risk cases can auto-route only when evidence sufficiency, evaluation quality and deterministic policy rules all pass. High-impact cases stay behind approval gates.',
+    kpis:[['Primary output','Policy engine'],['Go / no-go gate','Validated low-risk precision'],['Safety control','Permissions + approval gates']],
     progress:75
   },
   {
     label:'PHASE 4 / OPTIMIZE',
     title:'Use real failures as the product feedback loop.',
-    desc:'Corrections, escalations and misses become new evaluation cases. We improve prompts, context retrieval, business rules or model choice based on evidence.',
-    kpis:[['Primary output','Failure feedback loop'],['Optimization','Prompt + context'],['Business metric','Net time saved']],
+    desc:'Corrections, escalations and misses become regression cases. We compare prompt, retrieval and model versions using quality, p95 latency and cost per case before changing the product.',
+    kpis:[['Primary output','Regression feedback loop'],['Optimization','Prompt + retrieval + model'],['Tradeoff','Quality + latency + cost']],
     progress:100
   }
 ];
@@ -1461,7 +1577,7 @@ const expData={
       ['Product','Requirements','User and vendor needs to specs'],
       ['Delivery','Go-live','Implementation and issue follow-up']
     ],
-    heat:[['Product ownership',92],['Stakeholder complexity',96],['Data quality',91],['QA and validation',88],['AI transferability',90]],
+    evidence:[['Product ownership','Owned a national web intake system'],['Stakeholder complexity','Worked across 250+ external vendors'],['Data quality','Monitored high-volume data flows and errors'],['QA and validation','Manual QA, validation and issue investigation']],
     systems:['Jira','Monday','CRM','IDM','Excel','AI tools','Prompt writing','Web systems']
   },
   globale:{
@@ -1475,7 +1591,7 @@ const expData={
       ['Technical','Basic SQL','Data checks in internal systems'],
       ['Process','Rules','Structured decision environment']
     ],
-    heat:[['Analytical review',94],['Rule interpretation',90],['Data accuracy',92],['Technical depth',70],['AI transferability',84]],
+    evidence:[['Analytical review','Reviewed operational restrictions and exceptions'],['Rule interpretation','Worked in a structured rules environment'],['Data accuracy','Detected inconsistencies and validated data'],['Technical foundation','Used basic SQL and internal systems']],
     systems:['Basic SQL','Internal systems','E-commerce data','Operational rules','Documentation']
   },
   courts:{
@@ -1489,7 +1605,7 @@ const expData={
       ['Operations','Issue routing','Structured follow-up'],
       ['Quality','Documentation','Reliable operational control']
     ],
-    heat:[['Operational control',95],['Accuracy',96],['Risk awareness',92],['Documentation',90],['AI transferability',82]],
+    evidence:[['Operational control','Permissions and user lifecycle workflows'],['Accuracy','Access changes in a sensitive system'],['Risk awareness','Strict process and permission boundaries'],['Documentation','Structured operational follow-up']],
     systems:['Net HaMishpat','Permissions','User lifecycle','Internal procedures','Issue routing']
   }
 };
@@ -1501,7 +1617,7 @@ function renderExp(key){
   document.getElementById('expCore').textContent=d.core;
   document.getElementById('expCoreLabel').textContent=d.coreLabel;
   document.getElementById('proofGrid').innerHTML=d.proof.map(x=>`<div class="proof"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
-  document.getElementById('heatmap').innerHTML=d.heat.map(x=>`<div class="heat-row"><span>${x[0]}</span><div class="track"><i style="width:${x[1]}%"></i></div><b>${x[1]}</b></div>`).join('');
+  document.getElementById('heatmap').innerHTML=d.evidence.map(x=>`<div class="evidence-row"><span>${x[0]}</span><b>${x[1]}</b></div>`).join('');
   document.getElementById('systemCloud').innerHTML=d.systems.map((x,i)=>`<span class="system-chip" style="animation-delay:${i*.04}s">${x}</span>`).join('');
 }
 document.querySelectorAll('.exp-role-btn').forEach(b=>{
